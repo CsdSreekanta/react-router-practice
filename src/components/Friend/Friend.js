@@ -1,19 +1,19 @@
 import React from 'react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Friend = ({friend}) => {
     const {name, username, id} = friend
-    let navigate = useNavigate()
-    const showButton =()=>{
-// const path=`/friends/:${id}`
-// navigate(path)
-navigate(`/friends/:${id}`)
+const navigate = useNavigate()
+    const handleButton=()=>{
+        const path = `/friend/${id}`
+        navigate(path)
     }
     return (
         <div>
             <h1>{name}</h1>
-            <button onClick={showButton} className='button bg-gray-300 p-2 rounded'>{username} id:{id}</button>
+            <Link className='underline mr-3' to={`friend/${id}`} >{friend.name}</Link>
+            <button onClick={handleButton} className='button bg-gray-300 p-2 rounded'>{username} id:{id}</button>
             
         </div>
     );
